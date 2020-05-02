@@ -26,3 +26,20 @@ chrome.commands.onCommand.addListener(function (command) {
       break;
   }
 });
+
+chrome.runtime.onMessage.addListener((request) => {
+  chrome.browserAction.setIcon({
+    path:
+      request.scheme === "dark"
+        ? {
+            "16": "icon-dark-16.png",
+            "32": "icon-dark-32.png",
+            "256": "icon-dark.png",
+          }
+        : {
+            "16": "icon-16.png",
+            "32": "icon-32.png",
+            "256": "icon.png",
+          },
+  });
+});

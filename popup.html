@@ -1,12 +1,28 @@
 <style>
-  html,
-  body {
+  :root {
+    --background: #fff;
+    --text: #272727;
+    --hover: #c8c8c9;
+    --separator: #d9d9d9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #292a2d;
+      --text: #eeeeee;
+      --hover: #4b4c4f;
+      --separator: #383b3e;
+    }
+  }
+
+  html {
     margin: 0;
     padding: 0;
+    background: var(--background);
   }
   body {
-    padding-top: 6px;
-    padding-bottom: 6px;
+    margin: 0;
+    padding: 6px 0;
   }
   button {
     font: 13px/16px BlinkMacSystemFont, -apple-system, sans-serif;
@@ -16,17 +32,17 @@
     padding: 6px 12px;
     width: 100%;
     box-sizing: border-box;
-    color: #444;
+    color: var(--text);
     text-align: left;
     display: flex;
     outline: none;
   }
   button:hover {
-    background: #ccc;
+    background: var(--hover);
   }
   hr {
-    border: 0 solid #ddd;
-    border-top-width: 1px;
+    border: none;
+    border-top: 1px solid var(--separator);
   }
   .shortcut {
     margin-left: auto;
