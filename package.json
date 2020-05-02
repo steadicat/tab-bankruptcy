@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@types/chrome": "^0.0.106",
+    "prettier": "^2.0.5",
     "typescript": "^3.8.3"
   }
 }

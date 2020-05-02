@@ -7,24 +7,24 @@ function getTabPlainText({ title, url }) {
  * @param {chrome.tabs.Tab} tab
  */
 function getTabRichText({ title, url }) {
-  return `<a href="${encodeURI(url ?? "#")}">${title}</a>`;
+  return `<a href="${encodeURI(url ?? '#')}">${title}</a>`;
 }
 
 /**
  * @param {chrome.tabs.Tab[]} tabs
  * @param {string?} indent
  */
-function getTabsPlainText(tabs, indent = "") {
+function getTabsPlainText(tabs, indent = '') {
   return `${tabs
     .map((tab) => `${indent}- ${getTabPlainText(tab)}`)
-    .join("\n")}`;
+    .join('\n')}`;
 }
 
 /** @param {chrome.tabs.Tab[]} tabs */
 function getTabsRichText(tabs) {
   return `<ul>${tabs
     .map((tab) => `<li>${getTabRichText(tab)}</li>`)
-    .join("\n")}</ul>`;
+    .join('\n')}</ul>`;
 }
 
 /** @param {chrome.tabs.Tab[]} tabs */
@@ -32,8 +32,8 @@ function getWindowsPlainText(tabs) {
   const windows = groupByWindow(tabs);
   if (windows.length < 2) return getTabsPlainText(tabs);
   return `${windows
-    .map((tabs, i) => `- Window ${i + 1}\n${getTabsPlainText(tabs, "  ")}`)
-    .join("\n")}`;
+    .map((tabs, i) => `- Window ${i + 1}\n${getTabsPlainText(tabs, '  ')}`)
+    .join('\n')}`;
 }
 
 /** @param {chrome.tabs.Tab[]} tabs */
@@ -42,7 +42,7 @@ function getWindowsRichText(tabs) {
   if (windows.length < 2) return getTabsRichText(tabs);
   return `<ul>${windows
     .map((tabs, i) => `<li>Window ${i + 1}\n${getTabsRichText(tabs)}</li>`)
-    .join("\n")}</ul>`;
+    .join('\n')}</ul>`;
 }
 
 /**
@@ -52,13 +52,13 @@ function getWindowsRichText(tabs) {
 function copy(plainText, richText) {
   /** @param {ClipboardEvent} e */
   function listener(e) {
-    e.clipboardData?.setData("text/plain", plainText);
-    e.clipboardData?.setData("text/html", richText);
+    e.clipboardData?.setData('text/plain', plainText);
+    e.clipboardData?.setData('text/html', richText);
     e.preventDefault();
   }
-  document.addEventListener("copy", listener);
-  document.execCommand("copy");
-  document.removeEventListener("copy", listener);
+  document.addEventListener('copy', listener);
+  document.execCommand('copy');
+  document.removeEventListener('copy', listener);
 }
 
 /** @param {chrome.tabs.Tab[]} tabs */
@@ -88,9 +88,9 @@ function filterTabs(tabs) {
 /** @param {EventTarget | null} el */
 function flashAndClosePopup(el) {
   if (!(el instanceof HTMLElement)) return;
-  el.style.background = "transparent";
+  el.style.background = 'transparent';
   setTimeout(() => {
-    el.style.background = "";
+    el.style.background = '';
     window.close();
   }, 100);
 }
