@@ -1,0 +1,10 @@
+{
+  "include": ["*.js"],
+  "compilerOptions": {
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "lib": ["dom", "ES2018"]
+  }
+}

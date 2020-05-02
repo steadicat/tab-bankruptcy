@@ -1,26 +1,28 @@
-document.getElementById("copy-tab").addEventListener("click", (e) => {
+document.getElementById("copy-tab")?.addEventListener("click", (e) => {
   flashAndClosePopup(e.currentTarget);
   chrome.tabs.query({ active: true }, function (tabs) {
     copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
   });
 });
-document.getElementById("copy-all-tabs").addEventListener("click", (e) => {
+document.getElementById("copy-all-tabs")?.addEventListener("click", (e) => {
   flashAndClosePopup(e.currentTarget);
   chrome.tabs.query({}, function (tabs) {
     tabs = filterTabs(tabs);
     copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
   });
 });
-document.getElementById("copy-and-close-tab").addEventListener("click", (e) => {
-  flashAndClosePopup(e.currentTarget);
-  chrome.tabs.query({ active: true }, function (tabs) {
-    copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
-    closeTabs(tabs);
+document
+  .getElementById("copy-and-close-tab")
+  ?.addEventListener("click", (e) => {
+    flashAndClosePopup(e.currentTarget);
+    chrome.tabs.query({ active: true }, function (tabs) {
+      copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
+      closeTabs(tabs);
+    });
   });
-});
 document
   .getElementById("copy-and-close-all-tabs")
-  .addEventListener("click", (e) => {
+  ?.addEventListener("click", (e) => {
     flashAndClosePopup(e.currentTarget);
     chrome.tabs.query({}, function (tabs) {
       tabs = filterTabs(tabs);
@@ -33,6 +35,7 @@ const isMac = /(Mac_PowerPC)|(Macintosh)/;
 
 Array.from(document.querySelectorAll(".shortcut")).map((el) => {
   if (!isMac.test(navigator.userAgent)) return;
+  if (!(el instanceof HTMLElement)) return;
   el.innerText = el.innerText
     .replace(/Shift/gu, "\u21e7")
     .replace(/Alt/gu, "\u2325")
