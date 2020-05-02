@@ -1,13 +1,22 @@
+const titleRegex = /( - Google Docs$)|( - Google Sheets$)|( - Google Slides$)/;
+
+/** @param {string} title */
+function cleanUpTitle(title) {
+  return title.replace(titleRegex, '');
+}
+
 /** @param {chrome.tabs.Tab} tab */
 function getTabPlainText({ title, url }) {
-  return `${title}: ${url}`;
+  return `${cleanUpTitle(title ?? 'No title')}: ${url ?? '#'}`;
 }
 
 /**
  * @param {chrome.tabs.Tab} tab
  */
 function getTabRichText({ title, url }) {
-  return `<a href="${encodeURI(url ?? '#')}">${title}</a>`;
+  return `<a href="${encodeURI(url ?? '#')}">${cleanUpTitle(
+    title ?? 'No title'
+  )}</a>`;
 }
 
 /**
