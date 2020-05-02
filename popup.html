@@ -1,0 +1,55 @@
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  button {
+    font: 13px/16px BlinkMacSystemFont, -apple-system, sans-serif;
+    border: none;
+    background: transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #444;
+    text-align: left;
+    display: flex;
+    outline: none;
+  }
+  button:hover {
+    background: #ccc;
+  }
+  hr {
+    border: 0 solid #ddd;
+    border-top-width: 1px;
+  }
+  .shortcut {
+    margin-left: auto;
+    padding-left: 16px;
+  }
+</style>
+
+<button id="copy-tab">
+  Copy Tab
+  <span class="shortcut">Alt+C</span>
+</button>
+<button id="copy-and-close-tab">
+  Copy & Close Tab
+  <span class="shortcut">Alt+W</span>
+</button>
+<hr />
+<button id="copy-all-tabs">
+  Copy All Tabs
+  <span class="shortcut">Alt+Shift+C</span>
+</button>
+<button id="copy-and-close-all-tabs">
+  Copy & Close All Tabs
+  <span class="shortcut">Alt+Shift+W</span>
+</button>
+
+<script src="popup.js"></script>
