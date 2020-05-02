@@ -4,7 +4,7 @@
   "description": "Copy your Chrome tabs as rich text to paste into your notes",
   "manifest_version": 2,
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["lib.js", "background.js"],
     "persistent": false
   },
   "browser_action": {
