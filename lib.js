@@ -24,6 +24,8 @@ function getTabRichText({ title, url }) {
  * @param {string?} indent
  */
 function getTabsPlainText(tabs, indent = '') {
+  if (tabs.length === 0) return '';
+  if (tabs.length === 1) return getTabPlainText(tabs[0]);
   return `${tabs
     .map((tab) => `${indent}- ${getTabPlainText(tab)}`)
     .join('\n')}`;
@@ -31,6 +33,8 @@ function getTabsPlainText(tabs, indent = '') {
 
 /** @param {chrome.tabs.Tab[]} tabs */
 function getTabsRichText(tabs) {
+  if (tabs.length === 0) return '';
+  if (tabs.length === 1) return getTabRichText(tabs[0]);
   return `<ul>${tabs
     .map((tab) => `<li>${getTabRichText(tab)}</li>`)
     .join('\n')}</ul>`;
