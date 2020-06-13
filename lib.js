@@ -36,7 +36,7 @@ function getTabsRichText(tabs) {
   if (tabs.length === 0) return '';
   if (tabs.length === 1) return getTabRichText(tabs[0]);
   return `<ul>${tabs
-    .map((tab) => `<li>${getTabRichText(tab)}</li>`)
+    .map((tab) => `<li><p>${getTabRichText(tab)}</p></li>`)
     .join('\n')}</ul>`;
 }
 
