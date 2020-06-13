@@ -1,6 +1,6 @@
 document.getElementById('copy-tab')?.addEventListener('click', (e) => {
   flashAndClosePopup(e.currentTarget);
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
   });
 });
@@ -15,7 +15,7 @@ document
   .getElementById('copy-and-close-tab')
   ?.addEventListener('click', (e) => {
     flashAndClosePopup(e.currentTarget);
-    chrome.tabs.query({ active: true }, function (tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
       closeTabs(tabs);
     });

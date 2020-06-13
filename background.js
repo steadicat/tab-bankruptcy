@@ -1,7 +1,7 @@
 chrome.commands.onCommand.addListener((command) => {
   switch (command) {
     case 'copy-tab':
-      chrome.tabs.query({ active: true }, (tabs) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
       });
       break;
@@ -12,7 +12,7 @@ chrome.commands.onCommand.addListener((command) => {
       });
       break;
     case 'copy-and-close-tab':
-      chrome.tabs.query({ active: true }, (tabs) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         copy(getWindowsPlainText(tabs), getWindowsRichText(tabs));
         closeTabs(tabs);
       });
