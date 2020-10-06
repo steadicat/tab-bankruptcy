@@ -31,6 +31,34 @@ document
     });
   });
 
+document
+  .getElementById('download-tabs-as-txt')
+  ?.addEventListener('click', (e) => {
+    flashAndClosePopup(e.currentTarget);
+    chrome.tabs.query({}, function (tabs) {
+      tabs = filterTabs(tabs);
+      download(getWindowsPlainTextWithoutDashes(tabs), 'text/plain', 'txt');
+    });
+  });
+document
+  .getElementById('download-tabs-as-md')
+  ?.addEventListener('click', (e) => {
+    flashAndClosePopup(e.currentTarget);
+    chrome.tabs.query({}, function (tabs) {
+      tabs = filterTabs(tabs);
+      download(getWindowsMarkdown(tabs), 'text/plain', 'md');
+    });
+  });
+document
+  .getElementById('download-tabs-as-html')
+  ?.addEventListener('click', (e) => {
+    flashAndClosePopup(e.currentTarget);
+    chrome.tabs.query({}, function (tabs) {
+      tabs = filterTabs(tabs);
+      download(getWindowsRichText(tabs), 'text/html', 'html');
+    });
+  });
+
 const isMac = /(Mac_PowerPC)|(Macintosh)/;
 
 Array.from(document.querySelectorAll('.shortcut')).map((el) => {
